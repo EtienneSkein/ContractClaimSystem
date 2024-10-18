@@ -1,0 +1,34 @@
+﻿@model IEnumerable<ContractClaimSystem.Models.ClaimSubmission>
+
+<h2>Rejected Claims</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Lecturer Name</th>
+            <th>Hours Worked</th>
+            <th>Hourly Rate</th>
+            <th>Status</th>
+            <th>Additional Notes</th>
+            <th>Supporting Document</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var claim in Model)
+        {
+            <tr>
+                <td>@claim.LecturerName</td>
+                <td>@claim.HoursWorked</td>
+                <td>@claim.HourlyRate</td>
+                <td>@claim.Status</td>
+                <td>@claim.AdditionalNotes</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(claim.SupportingDocument))
+                    {
+                        <a href="@claim.SupportingDocument" target="_blank">View Document</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
